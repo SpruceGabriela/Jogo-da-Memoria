@@ -10,6 +10,7 @@ body {
 .cartas {
     height: 30vh;
     width: 15vw;
+    display: flex;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -19,8 +20,13 @@ header {
     align-items: center;
     display: flex;
     height: 50px;
+    align-items: center;
     justify-content: center;
     width: 100%;   
+}
+
+header img{
+    height: 50px;
 }
 
 main {

@@ -14,11 +14,20 @@ function embaralhar(lista){
     return lista;
 }
 
+//----------------------------------------------------
+
 function mostrar(cartas){
     cartas.style.backgroundImage = `url('images/${concatImagens[Number(cartas.id)]}')`;
     cartas.onclick = null;
 }
 
+//----------------------------------------------------
+
+function ocultar(cartas){
+    cartas.style.backgroundImage = "url('images/verso.png')";
+}
+
+//------------------------------------------------------
 
 let cartas = document.querySelectorAll('.cartas');
 
@@ -31,6 +40,9 @@ let concatImagens = imagens.concat(imagens);
 
 concatImagens = embaralhar(concatImagens);
 
+//-----------------------------------------------------
+
 for(carta of cartas){
     mostrar(carta);
 }
+
