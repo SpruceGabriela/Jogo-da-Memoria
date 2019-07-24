@@ -23,8 +23,41 @@ function mostrar(cartas){
 
 //----------------------------------------------------
 
+function pararClique(){
+    for(let carta of cartas){
+        cartas.onclick = null
+    }
+}
+
+//-----------------------------------------------------
+
+function continuarCliques(){
+    for(let carta of cartas){
+        if(carta.classList !== 'correta'){
+            ocultar(carta);
+        }
+    }
+}
+
+//-----------------------------------------------------
+
+
+
 function ocultar(cartas){
     cartas.style.backgroundImage = "url('images/verso.png')";
+    cartas.onclick = clicar;
+}
+
+function verificarIgualdade(){
+    if(primeiraCarta.style.backgroundImage !== segundaCarta.style.backgroundImage){
+        ocultar(primeiraCarta);
+        ocultar(segundaCarta);
+        
+    }
+    else{
+        primeiraCarta.classList.add('ok');
+        segundaCarta.classList.add('ok')
+    }
 }
 
 //------------------------------------------------------
