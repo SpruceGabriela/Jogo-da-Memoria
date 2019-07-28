@@ -8,7 +8,6 @@ body {
 }
 
 .cartas {
-    background-image: url('../images/verso.png');
     height: 30vh;
     width: 15vw;
     display: flex;

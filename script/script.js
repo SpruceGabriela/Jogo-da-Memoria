@@ -14,6 +14,18 @@ function embaralhar(lista){
     return lista;
 }
 
+
+
+
+
+function ocultar(carta){
+    carta.style.backgroundImage = "url('images/verso.png')";
+    carta.onclick = clicar;
+}
+
+//--------------------------------------------
+
+
 //----------------------------------------------------
 
 function mostrar(carta){
@@ -23,6 +35,7 @@ function mostrar(carta){
 
 //----------------------------------------------------
 
+
 function pararClique(){
     for(let carta of cartas){
         carta.onclick = null;
@@ -31,9 +44,24 @@ function pararClique(){
 
 //-----------------------------------------------------
 
+
+function clicar(){
+    mostrar(event.target);
+    if(primeiraCarta){
+        segundaCarta = event.target;
+        pararClique();
+        verificarIgualdade();
+    }
+    else{
+        primeiraCarta = event.target;
+    }
+}
+
+//-------------------------------------------
+
 function continuarCliques(){
     for(let carta of cartas){
-        if(carta.classList !== 'ok'){
+        if(!carta.classList.contains('ok')){
             ocultar(carta);
         }
     }
@@ -42,21 +70,26 @@ function continuarCliques(){
 //-----------------------------------------------------
 
 
-function ocultar(carta){
-    carta.style.backgroundImage = "url('images/verso.png')";
-    carta.onclick = clicar;
-}
-
 function verificarIgualdade(){
     if(primeiraCarta.style.backgroundImage !== segundaCarta.style.backgroundImage){
+        setTimeout(function(){
         ocultar(primeiraCarta);
         ocultar(segundaCarta);
+        novaJogada();
+        }, 1500);
         
     }
     else{
         primeiraCarta.classList.add('ok');
-        segundaCarta.classList.add('ok')
+        segundaCarta.classList.add('ok');
+        novaJogada();
     }
+}
+
+function novaJogada(){
+    primeiraCarta = null;
+    segundaCarta = null;
+    continuarCliques();
 }
 
 
@@ -76,8 +109,9 @@ concatImagens = embaralhar(concatImagens);
 
 
 for(let carta of cartas){
-    carta.onclick = function(event){
-        mostrar(event.target);        
-    };
+   mostrar(carta);
 }
 
+setTimeout(function(){
+    novaJogada();
+}, 3000);
