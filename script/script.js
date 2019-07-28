@@ -1,3 +1,5 @@
+//Função que gera imagens aleatórias para cada partida
+
 function embaralhar(lista){
     let temporario;
     let aleatorio;
@@ -15,7 +17,7 @@ function embaralhar(lista){
 }
 
 
-
+//---------------------------------------------------------------------
 
 
 function ocultar(carta){
@@ -23,17 +25,10 @@ function ocultar(carta){
     carta.onclick = clicar;
 }
 
-//--------------------------------------------
-
-
-//----------------------------------------------------
-
 function mostrar(carta){
     carta.style.backgroundImage = `url('images/${concatImagens[Number(carta.id)]}')`;
     carta.onclick = null;
 }
-
-//----------------------------------------------------
 
 
 function pararClique(){
@@ -41,8 +36,6 @@ function pararClique(){
         carta.onclick = null;
     }
 }
-
-//-----------------------------------------------------
 
 
 function clicar(){
@@ -57,8 +50,6 @@ function clicar(){
     }
 }
 
-//-------------------------------------------
-
 function continuarCliques(){
     for(let carta of cartas){
         if(!carta.classList.contains('ok')){
@@ -66,9 +57,6 @@ function continuarCliques(){
         }
     }
 }
-
-//-----------------------------------------------------
-
 
 function verificarIgualdade(){
     if(primeiraCarta.style.backgroundImage !== segundaCarta.style.backgroundImage){
@@ -92,10 +80,6 @@ function novaJogada(){
     continuarCliques();
 }
 
-
-//------------------------------------------------------
-
-
 let cartas = document.querySelectorAll('.cartas');
 
 let primeiraCarta;
@@ -115,3 +99,5 @@ for(let carta of cartas){
 setTimeout(function(){
     novaJogada();
 }, 3000);
+
+
